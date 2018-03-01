@@ -1,0 +1,53 @@
+Prog2 hint:
+
+main(), Exp(), Term(), Exp2(..) --- same as previous version
+
+
+int Term2(int inp):
+  ...
+  reads * or / operator;
+  
+  if read char is * or / operator, 
+    calls Term2(..) recursively to handle recursive *T or /T;
+
+  else if read char is + or - operator,
+    putback one position in the program string;
+  ...
+
+==> this Term2() function is responsible for handling ')' symbol reading, i.e.,
+    when reading ')' symbol, simply putback one position; 
+
+
+
+int Fact():
+  ...
+  reads one char;
+  converts it to an int value and returns;
+
+==> this Fact() now needs recursion for handling power operation, e.g., 2^3^4;
+    { return Fact2(Num()); }  //Num() reads one numeric value or returns (E)
+
+    int Fact2(int inp) //recursive func
+    { assign inp to result; //partial eval result from recursive call
+      ...
+      read one char (from program string); //skip spaces 
+      if '^' symbol,
+        result <-- Fact2( //here, evaluate power(result, Fact()) ); 
+      else 
+        putback one posiion;
+      ...
+    }//Fact2()
+
+    int Num()
+    { ...
+      read one char; //skip spaces
+      if '(' 
+        call Exp() and return whatever Exp() returns;
+      otherwise, 
+        convert it to numeric value and return;
+    }
+
+
+
+
+

@@ -1,0 +1,16 @@
+(define (fibo x)
+	(cond ((= x 0) 1 )
+	( (= x 1) 1 )
+	( else (+ (fibo (- x 1)) (fibo(- x 2))))
+	)
+)
+
+(define (fibo_list y)
+	(cond ((< y 0) '())
+		(else (append (fibo_list (- y 1)) (cons (fib y) '()) ) )
+	)
+)
+
+(define (fibo_list2_20)
+	(map fibo '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19) )
+)
